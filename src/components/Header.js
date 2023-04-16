@@ -2,20 +2,33 @@ import React from 'react'
 import Logo from '../img/logo.png'
 import { MdShoppingBasket } from "react-icons/md"
 import Avatar from '../img/avatar.png'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from '../firebase.config'
 
 const Header = () => {
+
+  const firebaseAuth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  const login = async () => {
+    const response = await signInWithPopup(firebaseAuth, provider)
+    console.log(response);
+  }
+
   return (
     //p is for padding
     <header className="fixed z-50 w-screen p-6 px-16 bg-primary">
-        
+
       {/* for desktops and tablets  */}
       <div className='hidden md:flex w-full h-full items-center justify-between'>
         {/* gap is the classname used for gap between differet items */}
-        <div className='flex items-center gap-2'>
+        <Link to="/" className='flex items-center gap-2'>
           {/* Logo link img */}
           <img src={Logo} className='w-8 object-cover' alt="Logo" />
           <p className='text-headingColor text-xl font-bold'>Gupta</p>
-        </div>
+        </Link>
         <div className='flex items-center gap-8'>
           {/* ml-auto is classname used for marginleft-auto which pushes the items to the right side */}
           <ul className='flex items-center gap-10'>
@@ -34,7 +47,9 @@ const Header = () => {
             </div>
           </div>
 
-          <img className='w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl' src={Avatar} alt="userProfile" />
+          <div className='relative'>
+            <motion.img whileTap={{ scale: 0.6 }} className='w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer' src={Avatar} alt="userProfile" onClick={login} />
+          </div>
         </div>
       </div>
       {/* For mobiles */}
