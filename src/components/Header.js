@@ -37,13 +37,13 @@ const Header = () => {
   };
 
   // function performed after logout button is clicked
-  const logout= () =>{
+  const logout = () => {
     setIsMenu(false)
     localStorage.clear()
 
     dispatch({
       type: actionType.SET_USER,
-      user:null
+      user: null
     })
   };
 
@@ -110,6 +110,14 @@ const Header = () => {
       </div>
       {/* For mobiles */}
       <div className='flex md:hidden items-center justify-between w-full h-full'>
+
+        <div className='relative flex items-center'>
+          <MdShoppingBasket className='text-textColor text-3xl cursor-pointer' />
+          <div className='absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg  flex items-center justify-center'>
+            <p className='text-xs text-white font-semibold'>2</p>
+          </div>
+        </div>
+
         <Link to="/" className='flex items-center gap-2'>
           {/* Logo link img */}
           <img src={Logo} className='w-8 object-cover' alt="Logo" />
