@@ -68,10 +68,18 @@ const Header = () => {
             className='flex items-center gap-10'>
 
             {/* text-base is 16px */}
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in ease-out cursor-pointer'>Home</li>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in ease-out cursor-pointer'>Menu</li>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in ease-out cursor-pointer'>About Us</li>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in ease-out cursor-pointer'>Services</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
+            onclick= {() => setIsMenu(false)}
+            >Home</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
+            onclick= {() => setIsMenu(false)}
+            >Menu</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
+            onclick= {() => setIsMenu(false)}
+            >About Us</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
+            onclick= {() => setIsMenu(false)}
+            >Services</li>
           </motion.ul>
 
           <div className='relative flex items-center'>
@@ -96,7 +104,9 @@ const Header = () => {
 
                   {user && user.email === "guptadeeya12@gmail.com" && (
                     <Link to={"/createItem"}>
-                      <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-gray-100 transition-all duration-100 ease-in-out'>New Item <MdAdd /> </p>
+                      <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-gray-100 transition-all duration-100 ease-in-out'
+                      onclick= {() => setIsMenu(false)}
+                      >New Item <MdAdd /> </p>
                     </Link>
                   )}
 
