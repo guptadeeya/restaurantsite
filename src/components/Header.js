@@ -69,16 +69,16 @@ const Header = () => {
 
             {/* text-base is 16px */}
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onclick= {() => setIsMenu(false)}
+            onClick= {() => setIsMenu(false)}
             >Home</li>
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onclick= {() => setIsMenu(false)}
+            onClick= {() => setIsMenu(false)}
             >Menu</li>
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onclick= {() => setIsMenu(false)}
+            onClick= {() => setIsMenu(false)}
             >About Us</li>
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onclick= {() => setIsMenu(false)}
+            onClick= {() => setIsMenu(false)}
             >Services</li>
           </motion.ul>
 
