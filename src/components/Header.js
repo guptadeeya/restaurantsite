@@ -69,16 +69,16 @@ const Header = () => {
 
             {/* text-base is 16px */}
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onClick= {() => setIsMenu(false)}
+              onClick={() => setIsMenu(false)}
             >Home</li>
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onClick= {() => setIsMenu(false)}
+              onClick={() => setIsMenu(false)}
             >Menu</li>
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onClick= {() => setIsMenu(false)}
+              onClick={() => setIsMenu(false)}
             >About Us</li>
             <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer'
-            onClick= {() => setIsMenu(false)}
+              onClick={() => setIsMenu(false)}
             >Services</li>
           </motion.ul>
 
@@ -97,7 +97,7 @@ const Header = () => {
             {
               isMenu && (
                 <motion.div
-                  initial={{ opacity: 0., scale: 0.6 }}
+                  initial={{ opacity: 0, scale: 0.6 }}
                   animate={{ opacity: 1, scale: 1 }}
                   opacity={{ opacity: 1, scale: 1 }}
                   className='w-40 bg-green-50 rounded-lg shadow-xl flex flex-col absolute top-12 right-0'>
@@ -105,7 +105,7 @@ const Header = () => {
                   {user && user.email === "guptadeeya12@gmail.com" && (
                     <Link to={"/createItem"}>
                       <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-gray-100 transition-all duration-100 ease-in-out'
-                      onclick= {() => setIsMenu(false)}
+                        onClick={() => setIsMenu(false)}
                       >New Item <MdAdd /> </p>
                     </Link>
                   )}
