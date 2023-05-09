@@ -55,6 +55,7 @@ module.exports = {
           cartBg: "#282a2c",
           cartItem: "#2e3033",
           cartTotal: "#343739",
+          rowBg: "rgb(255,235,201,0.3)",
         },
       },
     },

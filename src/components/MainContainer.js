@@ -2,6 +2,7 @@ import React from 'react'
 import HomeContainer from './HomeContainer'
 import { motion } from 'framer-motion'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+import RowContainer from './RowContainer'
 
 const MainContainer = () => {
   return (
@@ -27,6 +28,9 @@ const MainContainer = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* if the flag value is true it will be at fruits section and if false it will be at menu section */}
+        <RowContainer flag={true} />
       </section>
     </div>
   )
