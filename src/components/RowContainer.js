@@ -1,35 +1,42 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { MdShoppingBasket } from 'react-icons/md'
 import { motion } from 'framer-motion'
 
-const RowContainer = ({ flag }) => { 
+const RowContainer = ({ flag, data, scrollValue }) => {
+    // console.log(data);
+    const RowContainer = useRef()
+    useEffect(() => {
+        RowContainer.current.scrollLeft += scrollValue;
+     }, [scrollValue])
     return (
         // below classname is a dynamic string
-        <div className={`w-full my-10 bg-rowBg ${flag ? 'overflow-x-scroll' : 'overflow-x-hidden'}`}>
+        <div ref={RowContainer} className={`w-full flex my-10 gap-4 scroll-smooth bg-rowBg ${flag ? 'overflow-x-scroll scrollbar-none' : 'overflow-x-hidden flex-wrap'}`}>
 
-            <div className='w-300 md:w-340 my-10 h-auto backdrop-blur-lg bg-gray-200 rounded-lg p-2 hover:drop-shadow-lg'>
-                <div className='w-full flex items-center justify-between'>
-                    <motion.img whileHover={{ scale: 1.2 }} src="https://firebasestorage.googleapis.com/v0/b/restaurantsite-473c7.appspot.com/o/Images%2F1683435354134%20-%20i4.png?alt=media&token=5a0887bd-496b-4dd9-81bc-4bec7df947c9" alt="" className='w-40 -mt-8 drop-shadow-2xl'/>
+            {data && data.map(item => (
+                <div key={item?.id} className='w-300 h-[225px] min-w-[300px] md:w-340 md:min-w-[340px] my-10 backdrop-blur-lg bg-gray-200 rounded-lg p-2 hover:drop-shadow-lg flex flex-col items-center justify-between'>
+                    <div className='w-full flex items-center justify-between'>
+                        <motion.img whileHover={{ scale: 1.2 }} src={item?.imageURL} alt="" className='w-40 -mt-8 drop-shadow-2xl' />
 
-                    <motion.div whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-full bg-red-400 flex items-center justify-center cursor-pointer hover:shadow-md'>
-                        <MdShoppingBasket className='text-white' />
-                    </motion.div>
-                </div>
+                        <motion.div whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-full bg-red-400 flex items-center justify-center cursor-pointer hover:shadow-md'>
+                            <MdShoppingBasket className='text-white' />
+                        </motion.div>
+                    </div>
 
-                <div className='w-full flex flex-col items-end justify-end'>
-                    <p className='text-textcolor font-semibold text-base md:text-lg'>
-                        Chocolate and Vanilla
+                    <div className='w-full flex flex-col items-end justify-end'>
+                        <p className='text-textcolor font-semibold text-base md:text-lg'>
+                            {item?.title}
                         </p>
 
-                        <p className='mt-1 text-sm text-gray-500'>45 Calories</p>
+                        <p className='mt-1 text-sm text-gray-500'> {item?.calories} </p>
 
                         <div className='flex items-center gap-8'>
                             <p className='text-lg text-textColor font-semibold'>
-                                <span className='text-sm text-red-500'>$</span>5.3
-                                </p>
+                                <span className='text-sm text-red-500'>$</span>{item?.price}
+                            </p>
                         </div>
+                    </div>
                 </div>
-            </div>
+            ))}
         </div>
     )
 }
