@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import RowContainer from './RowContainer'
 import { useStateValue } from '../context/StateProvider'
+import MenuContainer from './MenuContainer'
 
 const MainContainer = () => {
   const [{ foodItems }, dispatch] = useStateValue();
@@ -41,9 +42,11 @@ useEffect(() =>{}, [scrollValue])
         {/* if the flag value is true it will be at fruits section and if false it will be at menu section */}
         <RowContainer
         scrollValue={scrollValue}
-        flag={true} data={foodItems?.filter(n => n.category === "ice-creams")}
-        />
+        flag={true} data={foodItems?.filter(n => n.category === "fruits")}
+        />   
       </section>
+
+     < MenuContainer/>
     </div>
   )
 }
