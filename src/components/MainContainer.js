@@ -9,12 +9,12 @@ import MenuContainer from './MenuContainer'
 import CartContainer from './CartContainer'
 
 const MainContainer = () => {
-  const [{ foodItems }, dispatch] = useStateValue();
+  const [{ foodItems, cartShow }, dispatch] = useStateValue();
   const [scrollValue, setScrollValue] = useState(0)
 
-// const rowContainerRef = useRef();
+  // const rowContainerRef = useRef();
 
-useEffect(() =>{}, [scrollValue])
+  useEffect(() => { }, [scrollValue, cartShow])
 
   return (
     <div className='w-full h-auto flex flex-col items-center justify-center'>
@@ -43,14 +43,15 @@ useEffect(() =>{}, [scrollValue])
 
         {/* if the flag value is true it will be at fruits section and if false it will be at menu section */}
         <RowContainer
-        scrollValue={scrollValue}
-        flag={true} data={foodItems?.filter(n => n.category === "fruits")}
-        />   
+          scrollValue={scrollValue}
+          flag={true} data={foodItems?.filter(n => n.category === "fruits")}
+        />
       </section>
 
-     < MenuContainer/>
+      < MenuContainer />
 
-     <CartContainer/>
+      {cartShow && (<CartContainer />)}
+
     </div>
   )
 }
